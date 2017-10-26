@@ -23,7 +23,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     db.collection('quotes').find().toArray((err, result) => {
         if (err) return console.log(err)
         res.render('index.ejs', { quotes: result })
