@@ -22,13 +22,12 @@
 </ul>
 <div>
 	<p class="record-name">
-		First record:
-		<%= quotes[0].name %>
+		<input type="text" name="name" id="name" class="name" placeholder="Name" value="">
 	</p>
 	<p class="record-quote">
-		<%= quotes[0].quote %>
+		<input type="text" name="quote" id="quote" class="quote" placeholder="Quote" value="">
 	</p>
-	<input type="text" name="update" class="key">
+	<input type="text" name="update" id="key" class="key" placeholder="Key" value="">
 	<button id="update"> Update</button>
 </div>
 <script src="main.js"></script>

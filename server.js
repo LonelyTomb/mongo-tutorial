@@ -25,10 +25,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
 	db.collection('quotes').find().toArray((err, result) => {
-		if (err) return console.log(err)
+		if (err) return console.log(err);
 		res.render('index.ejs', {quotes: result})
 	})
-})
+});
 
 app.post('/quotes', (req, res) => {
 	db.collection('quotes').save(req.body, (err, result) => {
@@ -39,17 +39,17 @@ app.post('/quotes', (req, res) => {
 });
 
 app.put('/quotes', (req, res) => {
-	db.collection('quotes').findOneAndUpdate({"name": req.body.key}, {
+	db.collection('quotes').findOneAndUpdate({"quote": req.body.key}, {
 			$set: {
 				name: req.body.name,
 				quote: req.body.quote
 			}
 		}, {
-			sort: {_id: -1},
-			upsert: true
+			// sort: {_id: -1},
+			upsert: false
 		},
 		(err, result) => {
-			if (err) return res.send(err)
+			if (err) return res.send(err);
 			res.send(result)
 		}
 	)
