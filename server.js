@@ -32,13 +32,14 @@ app.get('/', (req, res) => {
 
 app.post('/quotes', (req, res) => {
 	db.collection('quotes').save(req.body, (err, result) => {
-		if (err) return console.log(err)
-		console.log('saved to database')
+		if (err) return console.log(err);
+		console.log('saved to database');
 		res.redirect('/')
 	})
 });
+
 app.put('/quotes', (req, res) => {
-	db.collection('quotes').findOneAndUpdate({"name": "Gold"}, {
+	db.collection('quotes').findOneAndUpdate({"name": req.body.key}, {
 			$set: {
 				name: req.body.name,
 				quote: req.body.quote
