@@ -3,34 +3,70 @@
 <head>
 	<meta charset="UTF-8">
 	<title>MY APP</title>
+	<link rel="stylesheet" href="dist/css/uikit.css">
+	<script src="dist/js/uikit.js"></script>
 </head>
 
-<body>
-<form action="/quotes" method="POST">
-	<input type="text" placeholder="name" name="name">
-	<input type="text" placeholder="quote" name="quote">
-	<button type="submit">Submit</button>
+<body class="uk-container">
+<h1 class="uk-heading-primary uk-heading-bullet uk-heading-line"><span></span>Mongo CRUD Tutorial<span></span></h1>
+<form action="/quotes" method="POST" class="uk-form-stacked uk-card uk-card-body uk-card-default uk-container">
+	<div class="uk-card-header">
+		<h3 class="uk-card-title">Add New Quote</h3>
+	</div>
+	<div class="uk-card-body">
+		<div class="uk-width-medium">
+			<label for="name" class="uk-label">Name</label>
+			<div class="uk-form-controls">
+				<input type="text" placeholder="name" name="name" class="uk-input" id="name">
+			</div>
+		</div>
+		<div class="uk-width-medium">
+			<label for="quote" class="uk-label">Quote</label>
+			<div class="uk-form-controls">
+				<input type="text" placeholder="quote" name="quote" class="uk-input" id="quote">
+			</div>
+		</div>
+		<div class="uk-width-auto">
+			<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
+		</div>
+	</div>
 </form>
+<hr class="uk-divider-icon">
 
-<ul class="quotes">
-	<% for(var i = 0; i < quotes.length; i++) { %>
-	<li class="quote">
-		<span><%= quotes[i].name %></span>
-		<span><%= quotes[i].quote %></span>
-	</li>
-	<% } %>
-</ul>
-<div>
-	<p class="record-name">
-		<input type="text" name="name" id="name" class="name" placeholder="Name" value="">
-	</p>
-	<p class="record-quote">
-		<input type="text" name="quote" id="quote" class="quote" placeholder="Quote" value="">
-	</p>
-	<input type="text" name="update" id="key" class="key" placeholder="Key" value="">
-	<button id="update"> Update</button>
+<div class="uk-container uk-card uk-card-primary">
+	<div class="uk-card-header">
+		<h2 class="uk-card-title">Existing Quotes</h2>
+	</div>
+	<div class="uk-card-body">
+		<dl class="quotes uk-description-list uk-description-list-divider">
+			<% for(var i = 0; i < quotes.length; i++) { %>
+
+			<dl>Name: <%= quotes[i].name %></dl>
+			<dt>Quote: <%= quotes[i].quote %></dt>
+			<% } %>
+		</dl>
+	</div>
 </div>
-<script src="main.js"></script>
+<hr class="uk-divider-icon">
+
+<div class="uk-container">
+	<div class=" uk-card uk-card-secondary">
+		<div class="uk-card-header">
+			<h2 class="uk-card-title">Update Quote</h2>
+		</div>
+		<div class="uk-card-body">
+			<p class="record-name">
+				<input type="text" name="name" id="name" class="name uk-input" placeholder="Name" value="">
+			</p>
+			<p class="record-quote">
+				<input type="text" name="quote" id="quote" class="quote uk-input" placeholder="Quote" value="">
+			</p>
+			<input type="text" name="update" id="key" class="key uk-input" placeholder="Key" value="">
+			<button id="update" class="uk-button uk-button-secondary uk-margin-top"> Update</button>
+		</div>
+	</div>
+</div>
+<script src="dist/js/app.js"></script>
 </body>
 
 </html>

@@ -2,26 +2,29 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb');
 
+const path = require('path');
+
+const port = process.env.PORT || 3000;
+
+const app = express();
 
 let db;
 let uri = "mongodb://root:password@ds229435.mlab.com:29435/mlabs-test";
-
-
-MongoClient.MongoClient.connect(uri, (err, database) => {
-	if (err) return console.log(err)
-	db = database
-	app.listen(process.env.PORT || 3000, () => {
-		console.log('database connected')
-	})
-});
-
-const app = express();
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+
+MongoClient.MongoClient.connect(uri, (err, database) => {
+	if (err) return console.log(err);
+	db = database;
+	app.listen(port, () => {
+		console.log('database connected')
+	})
+});
 
 app.get('/', (req, res) => {
 	db.collection('quotes').find().toArray((err, result) => {
