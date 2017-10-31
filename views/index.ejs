@@ -9,47 +9,53 @@
 
 <body class="uk-container">
 <h1 class="uk-heading-primary uk-heading-bullet uk-heading-line"><span></span>Mongo CRUD Tutorial<span></span></h1>
-<form action="/quotes" method="POST" class="uk-form-stacked uk-card uk-card-body uk-card-default uk-container">
-	<div class="uk-card-header">
-		<h3 class="uk-card-title">Add New Quote</h3>
-	</div>
-	<div class="uk-card-body">
-		<div class="uk-width-medium">
-			<label for="name" class="uk-label">Name</label>
-			<div class="uk-form-controls">
-				<input type="text" placeholder="name" name="name" class="uk-input" id="name">
+<section class="uk-section uk-section-default">
+	<form action="/quotes" method="POST" class="uk-form-stacked uk-card uk-card-body uk-card-default uk-container">
+		<div class="uk-card-header">
+			<h3 class="uk-card-title">Add New Quote</h3>
+		</div>
+		<div class="uk-card-body">
+			<div class="uk-width-medium">
+				<label for="name" class="uk-form-label">Name</label>
+				<div class="uk-form-controls-text">
+					<input type="text" placeholder="name" name="name" class="uk-input" id="name">
+				</div>
+			</div>
+			<div class="uk-width-medium">
+				<label for="quote" class="uk-form-label">Quote</label>
+				<div class="uk-form-controls-text">
+					<textarea placeholder="quote" name="quote" class="uk-textarea" id="quote"></textarea>
+				</div>
+			</div>
+			<div class="uk-width-auto">
+				<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
 			</div>
 		</div>
-		<div class="uk-width-medium">
-			<label for="quote" class="uk-label">Quote</label>
-			<div class="uk-form-controls">
-				<input type="text" placeholder="quote" name="quote" class="uk-input" id="quote">
-			</div>
-		</div>
-		<div class="uk-width-auto">
-			<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
-		</div>
-	</div>
-</form>
+	</form>
+</section>
 <hr class="uk-divider-icon">
-
-<div class="uk-container uk-card uk-card-primary">
-	<div class="uk-card-header">
+<section class="uk-section uk-section-default">
+	<div class="uk-heading-primary">
 		<h2 class="uk-card-title">Existing Quotes</h2>
 	</div>
-	<div class="uk-card-body">
-		<dl class="quotes uk-description-list uk-description-list-divider">
-			<% for(var i = 0; i < quotes.length; i++) { %>
-
-			<dl>Name: <%= quotes[i].name %></dl>
-			<dt>Quote: <%= quotes[i].quote %></dt>
-			<% } %>
-		</dl>
+	<div class="uk-flex uk-flex-center">
+		<% for(var i = 0; i < quotes.length; i++) { %>
+		<div class="">
+			<div class="quotes uk-card uk-card-default uk-card-hover uk-animation-slide-top">
+				<div class="uk-card-header">
+					<h4 class="uk-card-title"><%= quotes[i].name %></h4>
+				</div>
+				<div class="uk-card-body">
+					<p class=""><%= quotes[i].quote %></p>
+				</div>
+			</div>
+		</div>
+		<% } %>
 	</div>
-</div>
+</section>
 <hr class="uk-divider-icon">
 
-<div class="uk-container">
+<section class="uk-section uk-section-default">
 	<div class=" uk-card uk-card-secondary">
 		<div class="uk-card-header">
 			<h2 class="uk-card-title">Update Quote</h2>
@@ -65,7 +71,7 @@
 			<button id="update" class="uk-button uk-button-secondary uk-margin-top"> Update</button>
 		</div>
 	</div>
-</div>
+</section>
 <script src="dist/js/app.js"></script>
 </body>
 
